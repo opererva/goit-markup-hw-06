@@ -752,8 +752,10 @@ body {
         line-height: 1.33;
         padding-left: 16px;
         padding-top: 8px;
+        resize: none;
         color: rgba(117, 117, 117, 0.5);
 }
+
 
 .modal-form-check {
         
