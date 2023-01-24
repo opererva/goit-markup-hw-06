@@ -47,6 +47,19 @@ body {
         margin: 0 auto;
 }
 
+.visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+        white-space: nowrap;
+        clip-path: inset(100%);
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+      }
+
 /* --------------HEADER--------------- */
 .header {
         padding-top: 24px;
@@ -777,16 +790,17 @@ body {
         width: 24px;
         height: 24px;
         border-radius: 50%;
-        background: #E7E9FC;
+        background-color: #E7E9FC;
         border: 1px solid rgba(0, 0, 0, 0.1);
-        transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); 
+        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) fill 250ms cubic-bezier(0.4, 0, 0.2, 1); 
 }
 
 .modal-close-btn:hover,
 .modal-close-btn:focus {
-        box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+        background-color: #404BBF;
+        fill: #FFFFFF;
+        outline: transparent;
 }
-
 .modal-title {
         font-family: 'Roboto';
         font-style: normal;
@@ -886,9 +900,8 @@ body {
 }
 
 
-.modal-form-check {
-        
-}
+.modal-form-check {}
+
 
 .modal-form-check-desc {
         font-family: 'Roboto';
@@ -901,6 +914,10 @@ body {
         display: flex;
         margin-bottom: 24px;
 }
+.check-link {
+        color: #404BBF;
+}
+
 
 .modal-form-check-desc .check-box {
         content: "";
@@ -911,21 +928,26 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: var(--background-color) 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+        border 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+        fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
         fill: transparent
 }
 
 
-.modal-form-check:checked + .modal-form-check-desc .check-box {
+.modal-form-check:checked + .modal-form-check-desc .check-box{
         border: none;
         background-color: var(--accent-color);
         fill:#F4F4FD;       
 }
 
-.check-link {
-        color: #404BBF;
+.modal-form-check:focus + .modal-form-check-desc > .check-box {
+        box-shadow: 0 0 0 0.1em #0e100c;
 }
-/*.modal-form-check-desc::before {
+
+/*
+.modal-form-check-desc::before {
         content: "";
         width: 16px;
         height: 16px;
@@ -943,10 +965,7 @@ body {
      background-position: center;
 }
 */
-.modal-form-check.is-hidden {
-        visibility: hidden;
-        
-}
+
 .modal-form-submit {
         align-self: center;
         display: block;
